@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class BookServiceImpl implements BookService{
@@ -26,7 +27,7 @@ public class BookServiceImpl implements BookService{
     }
 
     @Override
-    public Book get(long id) {
+    public Optional<Book> get(long id) {
         return dao.findById(id);
     }
 
@@ -37,7 +38,7 @@ public class BookServiceImpl implements BookService{
 
     @Transactional
     @Override
-    public Book delete(long id) {
+    public Optional<Book> delete(long id) {
         return dao.deleteById(id);
     }
 }

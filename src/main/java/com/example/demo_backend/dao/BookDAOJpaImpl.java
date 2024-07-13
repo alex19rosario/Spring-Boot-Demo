@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public class BookDAOJpaImpl implements BookDAO{
@@ -23,8 +24,8 @@ public class BookDAOJpaImpl implements BookDAO{
     }
 
     @Override
-    public Book findById(long id) {
-        return entityManager.find(Book.class, id);
+    public Optional<Book> findById(long id) {
+        return Optional.ofNullable(entityManager.find(Book.class, id));
     }
 
     @Override
@@ -34,9 +35,10 @@ public class BookDAOJpaImpl implements BookDAO{
     }
 
     @Override
-    public Book deleteById(long id) {
+    public Optional<Book> deleteById(long id) {
         Book book = entityManager.find(Book.class, id);
-        entityManager.remove(book);
-        return book;
+        if(book != null)
+            entityManager.remove(book);
+        return Optional.ofNullable(book);
     }
 }

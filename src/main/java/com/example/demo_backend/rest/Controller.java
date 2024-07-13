@@ -1,5 +1,6 @@
 package com.example.demo_backend.rest;
 
+import com.example.demo_backend.Exceptions.BookNotFoundException;
 import com.example.demo_backend.entity.Book;
 import com.example.demo_backend.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,7 +27,9 @@ public class Controller {
 
     @GetMapping("/books/{bookId}")
     public Book getBook(@PathVariable long bookId){
-        return bookService.get(bookId);
+        return bookService.get(bookId).orElseThrow(() -> {
+            throw new BookNotFoundException(String.format("No book associated with id %s", bookId));
+        });
     }
 
     @PostMapping("/books")
@@ -36,7 +39,9 @@ public class Controller {
 
     @DeleteMapping("/books/{bookId}")
     public Book deleteBook(@PathVariable long bookId){
-        return bookService.delete(bookId);
+        return bookService.delete(bookId).orElseThrow(() -> {
+            throw new BookNotFoundException(String.format("No book associated with id %s", bookId));
+        });
     }
 
 
