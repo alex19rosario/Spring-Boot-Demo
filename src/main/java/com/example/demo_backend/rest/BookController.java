@@ -11,12 +11,12 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api")
-public class Controller {
+public class BookController {
 
     private final BookService bookService;
 
     @Autowired
-    public Controller(@Qualifier("bookServiceImpl") BookService bookService){
+    public BookController(@Qualifier("bookServiceImpl") BookService bookService){
         this.bookService = bookService;
     }
 
