@@ -1,4 +1,4 @@
-## This is the Oracle Database script to create tables for roles, users, and one business entity.
+## This is the Oracle Database script to create roles, users, and one business entity table.
 ```sql
 DROP TABLE BOOKS;
 DROP TABLE AUTHORITIES;
