@@ -46,7 +46,7 @@ CREATE OR REPLACE TRIGGER BOOK_TRIGGER
     END;
 /
 
---Dummy Data fo testing purposes
+--Dummy Data for testing purposes
 
 INSERT INTO BOOKS (TITLE, AUTHOR, GENRE) VALUES ('The Great Gatsby', 'F. Scott Fitzgerald', 'Fiction');
 INSERT INTO BOOKS (TITLE, AUTHOR, GENRE) VALUES ('1984', 'George Orwell', 'Dystopian');
